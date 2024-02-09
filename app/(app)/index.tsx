@@ -1,22 +1,15 @@
 import { View, Text, StyleSheet, Button } from "react-native";
 import { logout } from "@/services/AuthService";
 import { useRouter } from "expo-router";
+import Background from "@/components/Background";
 
 export default function Page() {
   const router = useRouter();
 
-  const handleLogout = () => {
-    logout().then(() => {
-      console.log("Çıkış yapıldı.");
-      router.replace("/");
-    });
-  };
-
   return (
     <View style={styles.container}>
+      <Background />
       <Text>Ana Sayfa...</Text>
-
-      <Button title="Çıkış Yap" onPress={handleLogout} />
     </View>
   );
 }

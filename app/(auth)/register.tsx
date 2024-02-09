@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { View, Button, Text, StyleSheet, TextInput } from "react-native";
+import { useState } from "react";
+import { View, StyleSheet } from "react-native";
 import Background from "@/components/Background";
 
 import "@/firebaseConfig";
-import { login } from "@/services/AuthService";
+import { register, login } from "@/services/AuthService";
 import { useRouter } from "expo-router";
 import CustomTextInput from "@/components/CustomTextInput";
 import CustomButton from "@/components/CustomButton";
@@ -11,43 +11,27 @@ import CustomButton from "@/components/CustomButton";
 export default function Page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const router = useRouter();
 
-  const handleLogin = () => {
-    login(email, password)
+  const handleRegister = () => {
+    register(email, password)
       .then((userCredential) => {
-        // Signed in
+        // Kayıt olundu.
         const user = userCredential.user;
         console.log(user);
-        setError("");
-        router.replace("/(app)");
+        login(email, password).then((userCredential) => {
+          // Giriş yapıldı.
+          router.back();
+          router.replace("/(app)");
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
-        handleSetError(errorCode);
       });
-  };
-
-  const handleSetError = (message: string) => {
-    switch (message) {
-      case "auth/user-not-found":
-        setError("Kullanıcı bulunamadı");
-        break;
-      case "auth/wrong-password":
-        setError("Hatalı şifre");
-        break;
-      case "auth/invalid-email":
-        setError("Geçersiz e-posta");
-        break;
-      default:
-        setError("E-post ya da Şifre hatalı");
-        break;
-    }
   };
 
   return (
@@ -67,15 +51,11 @@ export default function Page() {
           secureTextEntry
         />
 
-        <View style={styles.buttonsContainer}>
-          <CustomButton
-            buttonLabel="Kayıt Ol"
-            onPress={() => router.navigate("/register")}
-          />
-          <CustomButton buttonLabel="Giriş Yap" onPress={handleLogin} />
-        </View>
-
-        <Text style={{ color: "red" }}>{error}</Text>
+        <CustomButton
+          buttonLabel="Kayıt Ol"
+          onPress={handleRegister}
+          fullWidth
+        />
       </View>
     </View>
   );
@@ -90,10 +70,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
-  },
-  buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
   },
 });
