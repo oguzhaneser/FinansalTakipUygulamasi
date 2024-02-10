@@ -6,6 +6,11 @@ import {
   signOut,
 } from "firebase/auth";
 
+export const getUser = async () => {
+  const user = await AsyncStorage.getItem("@user");
+  return user ? JSON.parse(user) : null;
+};
+
 export const login = async (email: string, password: string) => {
   const auth = getAuth();
   await AsyncStorage.setItem("@user", JSON.stringify({ email, password }));

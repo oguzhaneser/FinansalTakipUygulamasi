@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Genel",
+    "icon": "general"
+  },
+  {
+    "id": "2",
+    "name": "Gıda",
+    "icon": "food"
+  },
+  {
+    "id": "3",
+    "name": "Eğlence",
+    "icon": "fun"
+  },
+  {
+    "id": "4",
+    "name": "Fatura",
+    "icon": "bill"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "United State Dollar",
+    "code": "USD",
+    "symbol": "$",
+    "toUSD": 1
+  },
+  {
+    "id": 2,
+    "name": "Euro",
+    "code": "EUR",
+    "symbol": "€",
+    "toUSD": 1.08
+  },
+  {
+    "id": 3,
+    "name": "Türk Lirası",
+    "code": "TRY",
+    "symbol": "₺",
+    "toUSD": 0.033
+  }
+]

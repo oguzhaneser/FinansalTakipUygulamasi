@@ -33,9 +33,9 @@ export default function Page() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Hoş Geldiniz...</Text>
-    </View>
+      <View style={styles.container}>
+        <Text>Hoş Geldiniz...</Text>
+      </View>
   );
 }
 
