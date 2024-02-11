@@ -68,7 +68,7 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="four"
+          name="report"
           options={{
             title: "Raporlama",
             tabBarIcon: ({ color }) => (

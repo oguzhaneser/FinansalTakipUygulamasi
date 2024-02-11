@@ -39,8 +39,6 @@ export default function Page() {
     const fetchBudgets = async () => {
       const user = await getUser();
       if (user) {
-        console.log(user);
-
         const userBudgets = await getUserBudgets(user.email);
         if (userBudgets) {
           setBudgets(userBudgets);
