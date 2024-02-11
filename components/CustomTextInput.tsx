@@ -5,6 +5,7 @@ export default function CustomTextInput(props: {
   onChangeText: (text: string) => void;
   value: string;
   secureTextEntry?: boolean;
+  keyboardType?: "default" | "number-pad" | "decimal-pad" | "numeric" | "email-address" | "phone-pad";
 }) {
   return (
     <TextInput
@@ -14,6 +15,7 @@ export default function CustomTextInput(props: {
       value={props.value}
       secureTextEntry={props.secureTextEntry}
       placeholderTextColor={"#ffffff"}
+      keyboardType={props.keyboardType}
     />
   );
 }

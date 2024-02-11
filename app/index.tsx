@@ -20,7 +20,6 @@ export default function Page() {
         login(user.email, user.password).then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
           router.replace("/(app)");
         });
       } else {
